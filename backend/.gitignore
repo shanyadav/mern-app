@@ -1,0 +1,25 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# idea
+.idea/*
+# Dependency directories
+node_modules
+jspm_packages
+
+# Optional npm cache directory
+.npm
+
+# Mac files
+.DS_Store
+
+# VS Code
+.vscode
+
+# Exclude auto generated folders
+/ansible
+/tmp
+
+config/local.json

@@ -1,0 +1,390 @@
+.header_top_right li i {
+    color: #E52F57;
+}
+
+.opening-hrs p i {
+    color: #E52F57;
+}
+
+#navigation ul li.active>a {
+    color: #E52F57;
+}
+
+#navigation>ul>li:hover>a {
+    color: #E52F57 !important;
+}
+
+#navigation ul ul li:hover>a,
+#navigation ul ul li a:hover {
+    color: #E52F57;
+    border-left: 1px solid #E52F57;
+}
+
+.slider_home h5 {
+    color: #E52F57;
+}
+
+.more-link {
+    background: #E52F57;
+}
+
+.slider_social li a {
+    background: #E52F57;
+}
+
+.slider_social li:hover a {
+    color: #E52F57;
+}
+
+.slider_home .owl-nav div {
+    border: 1px solid #E52F57;
+}
+
+.slider_home .owl-nav div:hover {
+    background: #E52F57 !important;
+}
+
+.slider_home.owl-theme .owl-dot.active span {
+    background: #E52F57;
+}
+
+.base-header small {
+    color: #E52F57;
+}
+
+.base-header h2::after,
+.base-header.base-header-left small::after {
+    background-color: #E52F57;
+}
+
+.abut_title a {
+    color: #E52F57;
+}
+
+.team_wrap .owl-nav div:hover {
+    background-color: #E52F57;
+}
+
+.team-social-icon ul li a:hover {
+    color: #E52F57;
+}
+
+.product-title p {
+    color: #E52F57;
+}
+
+.badge-starrating i {
+    color: #E52F57;
+}
+
+.owl-dot.active span {
+    background: #E52F57;
+}
+
+.promo-list i {
+    color: #E52F57;
+}
+
+.promo-list:hover i {
+    border: 2px dotted #E52F57;
+    background: #E52F57;
+}
+
+.event_info i {
+    color: #E52F57;
+}
+
+.gallery-section .owl-nav div {
+    background: #E52F57;
+}
+
+.testimonial_content i {
+    color: #E52F57;
+}
+
+.testi_social {
+    background: #E52F57;
+}
+
+.news_letter_wrp .submit-contact {
+    background: #E52F57;
+}
+
+.widget.contact_info li i {
+    color: #E52F57;
+}
+
+.scrollup {
+    background: #E52F57;
+}
+
+.footer_socil .list-icons li a:hover {
+    color: #E52F57;
+}
+
+/* ======= End Home Page ========= */
+
+/* ======= Start Menu Page  ========= */
+.banner-text p a:hover {
+    color: #E52F57;
+}
+
+.findmenu-section .col-sm-12 {
+    background-color: #E52F57;
+}
+
+.menu-category .menu-filter p i {
+    color: #E52F57;
+}
+
+.full-menu-btn {
+    background: #E52F57;
+}
+
+.menu-list-nav .nav-link.active {
+    background: #E52F57;
+}
+
+.btn.menu-item-link::after {
+    border: 1px solid #E52F57;
+    color: #E52F57;
+}
+
+.menu-card-btn {
+    background: #E52F57;
+}
+
+.menu-card-price {
+    color: #E52F57;
+}
+
+.menu-cart-head {
+    background: #E52F57;
+}
+
+.menu-cart-footer {
+    background: #E52F57;
+}
+
+
+
+/* ======= End Menu Page  ========= */
+
+
+/* ======= Start Shop Page  ========= */
+.findshop-section .container>.row>.col-sm-12 {
+    background-color: #E52F57;
+}
+
+.findshop-wrap .menu-category a>i {
+    color: #FFF;
+    font-size: 25px;
+    background: #E52F57;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    line-height: 60px;
+}
+
+.findshop-wrap .reset-menu-btn {
+    background: #E52F57;
+    border: 0px;
+    color: #fff;
+    padding: 15px 0px;
+    border-radius: 50px;
+    width: 270px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.fmenu-contact-col:hover .fmenu-icon i {
+    border: 1px dashed #E52F57 !important;
+    background: #E52F57;
+}
+
+.shop-view-cart .shop-cart-btn {
+    background: #E52F57;
+}
+
+/* ======= End Shop Page  ========= */
+
+/* ======= Start About Page  ========= */
+.team-section .team_wrap {
+    background-color: #E52F57;
+}
+
+/* ======= Start Review Page  ========= */
+.contact-form .submit-contact {
+    background: #E52F57;
+}
+
+/* ======= Start Contact Page  ========= */
+.single_address i {
+    color: #E52F57;
+}
+
+.single_address::after {
+    background: #E52F57;
+}
+
+.contact-form .submit-contact {
+    background: #E52F57;
+}
+
+.catering-text ul li::after {
+    color: #E52F57;
+}
+
+.contact-form .submit-contact {
+    background: #E52F57;
+}
+
+/* ======= Start Event Page  ========= */
+.widget-search .input-group button {
+    background: #E52F57;
+}
+
+.single_blog .blog_date span i {
+    color: #E52F57;
+}
+
+.recent-title>span i {
+    color: #E52F57;
+}
+
+.widget .widget-title::after {
+    background: #E52F57;
+}
+
+.widget-tags>a:hover {
+    border-color: #E52F57;
+    background: #E52F57;
+}
+
+.single_blog .marked {
+    border-left: 2px solid #E52F57;
+}
+
+.single_blog .marked span {
+    color: #E52F57;
+}
+
+.post-option .middle-icon a {
+    color: #E52F57;
+}
+
+.comments li .comment span.comment-reply a {
+    border: 1px solid #E52F57;
+    background: #E52F57;
+}
+
+.comments li .comment span.comment-reply a:hover {
+    color: #E52F57;
+}
+
+.post-option .arrow-icon {
+    border: 1px solid #E52F57;
+    color: #E52F57;
+}
+
+.post-option .arrow-icon:hover {
+    background: #E52F57;
+}
+
+body input:focus,
+body textarea:focus {
+    border: 1px dashed #E52F57 !important;
+}
+
+.comment-form-warper .submit {
+    background: #E52F57;
+}
+
+.categories-type li:hover a {
+    color: #E52F57;
+}
+
+.blog_info h4:hover {
+    color: #E52F57;
+}
+
+.prodt_pagination li a.current {
+    background: #E52F57;
+    border: 1px solid #E52F57;
+}
+
+/* ======= Start Offer Page  ========= */
+.loyalty-card h4 {
+    background: #E52F57;
+}
+
+.subscribe-form .submit {
+    background: #E52F57;
+}
+
+/* ======= Start faq Page  ========= */
+
+.faq-qes a {
+    color: #E52F57;
+}
+
+.faq-link::after {
+    border: 1px solid #E52F57;
+    color: #E52F57;
+}
+
+/* ======= Start  Checkout Page  ========= */
+
+.checkout-section .card-header {
+    background: #E52F57;
+}
+
+.checkout-section .submit {
+    background: #E52F57;
+}
+
+/* ======= Start My Account Page  ========= */
+
+.login-form .submit,
+.registration-form .submit {
+    background: #E52F57;
+}
+
+.account-section .row:hover .registration-form::after {
+    background: #E52F57;
+}
+
+.account-section .registration-form::before {
+    background: #E52F57;
+}
+
+.term-and-condition a {
+    color: #E52F57;
+}
+
+/* ======= Start Profile  Page  ========= */
+.profile-tab-wrap::after {
+    background: #E52F57;
+}
+
+.profile-tab-wrap .nav-pills .nav-link::after {
+    background: #E52F57;
+}
+
+.order-track-wrap ul li span {
+    border: 1px solid #E52F57;
+}
+
+.order-track-wrap ul li span::after {
+    background: #E52F57;
+}
+
+.order-track-wrap ul li:hover span {
+    background: #E52F57;
+}
+
+.profile-card-wrap form button {
+    background: #E52F57;
+}

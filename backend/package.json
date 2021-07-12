@@ -1,0 +1,40 @@
+{
+  "name": "better-tech-solution",
+  "version": "1.0.0",
+  "description": "This is api for BTS",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "lint": "./node_modules/.bin/eslint --ignore-path .gitignore . *.js",
+    "migrate": "node_modules/.bin/mongration -f ./migrations -c config/migration-config.js"
+  },
+  "keywords": [
+    "swagger"
+  ],
+  "license": "Unlicense",
+  "private": true,
+  "dependencies": {
+    "async": "^3.1.0",
+    "body-parser": "^1.19.0",
+    "config": "1.21.0",
+    "connect": "3.2.0",
+    "cors": "^2.8.5",
+    "js-yaml": "3.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "4.17.4",
+    "moment": "^2.24.0",
+    "mongoose": "^5.5.0",
+    "mongration": "1.0.1",
+    "ngrok": "^3.2.7",
+    "nodemailer": "^6.6.0",
+    "password-hash": "^1.2.2",
+    "request": "^2.88.0",
+    "stripe": "^7.9.1",
+    "swagger-tools": "0.10.1",
+    "uuid": "^3.0.1",
+    "winston": "2.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0"
+  }
+}

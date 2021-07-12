@@ -1,0 +1,12 @@
+{
+  "mongo": {
+    "database_host": "mongodb+srv://bts:Tophat@1234@cluster0.ektgu.mongodb.net/bts?retryWrites=true&w=majority"
+  },
+  "swagger_ui_config": {
+    "swaggerUi": "/v1/docs",
+    "apiDocs": "/v1/api-docs"
+  },
+  "job": {
+   
+  }
+}

@@ -1,0 +1,390 @@
+.header_top_right li i {
+    color: #FF0000;
+}
+
+.opening-hrs p i {
+    color: #FF0000;
+}
+
+#navigation ul li.active>a {
+    color: #FF0000;
+}
+
+#navigation>ul>li:hover>a {
+    color: #FF0000 !important;
+}
+
+#navigation ul ul li:hover>a,
+#navigation ul ul li a:hover {
+    color: #FF0000;
+    border-left: 1px solid #FF0000;
+}
+
+.slider_home h5 {
+    color: #FF0000;
+}
+
+.more-link {
+    background: #FF0000;
+}
+
+.slider_social li a {
+    background: #FF0000;
+}
+
+.slider_social li:hover a {
+    color: #FF0000;
+}
+
+.slider_home .owl-nav div {
+    border: 1px solid #FF0000;
+}
+
+.slider_home .owl-nav div:hover {
+    background: #FF0000 !important;
+}
+
+.slider_home.owl-theme .owl-dot.active span {
+    background: #FF0000;
+}
+
+.base-header small {
+    color: #FF0000;
+}
+
+.base-header h2::after,
+.base-header.base-header-left small::after {
+    background-color: #FF0000;
+}
+
+.abut_title a {
+    color: #FF0000;
+}
+
+.team_wrap .owl-nav div:hover {
+    background-color: #FF0000;
+}
+
+.team-social-icon ul li a:hover {
+    color: #FF0000;
+}
+
+.product-title p {
+    color: #FF0000;
+}
+
+.badge-starrating i {
+    color: #FF0000;
+}
+
+.owl-dot.active span {
+    background: #FF0000;
+}
+
+.promo-list i {
+    color: #FF0000;
+}
+
+.promo-list:hover i {
+    border: 2px dotted #FF0000;
+    background: #FF0000;
+}
+
+.event_info i {
+    color: #FF0000;
+}
+
+.gallery-section .owl-nav div {
+    background: #FF0000;
+}
+
+.testimonial_content i {
+    color: #FF0000;
+}
+
+.testi_social {
+    background: #FF0000;
+}
+
+.news_letter_wrp .submit-contact {
+    background: #FF0000;
+}
+
+.widget.contact_info li i {
+    color: #FF0000;
+}
+
+.scrollup {
+    background: #FF0000;
+}
+
+.footer_socil .list-icons li a:hover {
+    color: #FF0000;
+}
+
+/* ======= End Home Page ========= */
+
+/* ======= Start Menu Page  ========= */
+.banner-text p a:hover {
+    color: #FF0000;
+}
+
+.findmenu-section .col-sm-12 {
+    background-color: #FF0000;
+}
+
+.menu-category .menu-filter p i {
+    color: #FF0000;
+}
+
+.full-menu-btn {
+    background: #FF0000;
+}
+
+.menu-list-nav .nav-link.active {
+    background: #FF0000;
+}
+
+.btn.menu-item-link::after {
+    border: 1px solid #FF0000;
+    color: #FF0000;
+}
+
+.menu-card-btn {
+    background: #FF0000;
+}
+
+.menu-card-price {
+    color: #FF0000;
+}
+
+.menu-cart-head {
+    background: #FF0000;
+}
+
+.menu-cart-footer {
+    background: #FF0000;
+}
+
+
+
+/* ======= End Menu Page  ========= */
+
+
+/* ======= Start Shop Page  ========= */
+.findshop-section .container>.row>.col-sm-12 {
+    background-color: #FF0000;
+}
+
+.findshop-wrap .menu-category a>i {
+    color: #FFF;
+    font-size: 25px;
+    background: #FF0000;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    line-height: 60px;
+}
+
+.findshop-wrap .reset-menu-btn {
+    background: #FF0000;
+    border: 0px;
+    color: #fff;
+    padding: 15px 0px;
+    border-radius: 50px;
+    width: 270px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.fmenu-contact-col:hover .fmenu-icon i {
+    border: 1px dashed #FF0000 !important;
+    background: #FF0000;
+}
+
+.shop-view-cart .shop-cart-btn {
+    background: #FF0000;
+}
+
+/* ======= End Shop Page  ========= */
+
+/* ======= Start About Page  ========= */
+.team-section .team_wrap {
+    background-color: #FF0000;
+}
+
+/* ======= Start Review Page  ========= */
+.contact-form .submit-contact {
+    background: #FF0000;
+}
+
+/* ======= Start Contact Page  ========= */
+.single_address i {
+    color: #FF0000;
+}
+
+.single_address::after {
+    background: #FF0000;
+}
+
+.contact-form .submit-contact {
+    background: #FF0000;
+}
+
+.catering-text ul li::after {
+    color: #FF0000;
+}
+
+.contact-form .submit-contact {
+    background: #FF0000;
+}
+
+/* ======= Start Event Page  ========= */
+.widget-search .input-group button {
+    background: #FF0000;
+}
+
+.single_blog .blog_date span i {
+    color: #FF0000;
+}
+
+.recent-title>span i {
+    color: #FF0000;
+}
+
+.widget .widget-title::after {
+    background: #FF0000;
+}
+
+.widget-tags>a:hover {
+    border-color: #FF0000;
+    background: #FF0000;
+}
+
+.single_blog .marked {
+    border-left: 2px solid #FF0000;
+}
+
+.single_blog .marked span {
+    color: #FF0000;
+}
+
+.post-option .middle-icon a {
+    color: #FF0000;
+}
+
+.comments li .comment span.comment-reply a {
+    border: 1px solid #FF0000;
+    background: #FF0000;
+}
+
+.comments li .comment span.comment-reply a:hover {
+    color: #FF0000;
+}
+
+.post-option .arrow-icon {
+    border: 1px solid #FF0000;
+    color: #FF0000;
+}
+
+.post-option .arrow-icon:hover {
+    background: #FF0000;
+}
+
+body input:focus,
+body textarea:focus {
+    border: 1px dashed #FF0000 !important;
+}
+
+.comment-form-warper .submit {
+    background: #FF0000;
+}
+
+.categories-type li:hover a {
+    color: #FF0000;
+}
+
+.blog_info h4:hover {
+    color: #FF0000;
+}
+
+.prodt_pagination li a.current {
+    background: #FF0000;
+    border: 1px solid #FF0000;
+}
+
+/* ======= Start Offer Page  ========= */
+.loyalty-card h4 {
+    background: #FF0000;
+}
+
+.subscribe-form .submit {
+    background: #FF0000;
+}
+
+/* ======= Start faq Page  ========= */
+
+.faq-qes a {
+    color: #FF0000;
+}
+
+.faq-link::after {
+    border: 1px solid #FF0000;
+    color: #FF0000;
+}
+
+/* ======= Start  Checkout Page  ========= */
+
+.checkout-section .card-header {
+    background: #FF0000;
+}
+
+.checkout-section .submit {
+    background: #FF0000;
+}
+
+/* ======= Start My Account Page  ========= */
+
+.login-form .submit,
+.registration-form .submit {
+    background: #FF0000;
+}
+
+.account-section .row:hover .registration-form::after {
+    background: #FF0000;
+}
+
+.account-section .registration-form::before {
+    background: #FF0000;
+}
+
+.term-and-condition a {
+    color: #FF0000;
+}
+
+/* ======= Start Profile  Page  ========= */
+.profile-tab-wrap::after {
+    background: #FF0000;
+}
+
+.profile-tab-wrap .nav-pills .nav-link::after {
+    background: #FF0000;
+}
+
+.order-track-wrap ul li span {
+    border: 1px solid #FF0000;
+}
+
+.order-track-wrap ul li span::after {
+    background: #FF0000;
+}
+
+.order-track-wrap ul li:hover span {
+    background: #FF0000;
+}
+
+.profile-card-wrap form button {
+    background: #FF0000;
+}

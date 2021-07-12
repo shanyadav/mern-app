@@ -1,0 +1,38 @@
+{
+  "server": {
+    "port": 3200
+  },
+  "client_errors": {
+    "400": {"error_code": null, "log_level": "notice"},
+    "401": {"error_code": "AUTHORIZATION_ERROR", "log_level": "notice"},
+    "404": {"error_code": "RESOURCE_NOT_FOUND", "log_level": "notice"},
+    "405": {"error_code": "METHOD_NOT_SUPPORTED", "log_level": "notice"},
+    "406": {"error_code": "CONTENT_TYPE_NOT_SUPPORTED", "log_level": "notice"},
+    "409": {"error_code": "CONFLICT_ERROR", "log_level": "notice"}
+  },
+  "mongo": {
+    "database_host": "mongodb://localhost:27017/bts",
+    "options": {
+      "useNewUrlParser": true
+    }
+  },
+  "keys": {
+    "jwt_secret_key": "6MrnYHZapzmgk0yJ0VgF"
+  },
+  "mail": {
+    "user": "kiran.tophat@gmail.com",
+    "pass": "Tophat@1234"
+  },
+  "logger": {
+    "stack": {
+      "app": "BetterTechSolution"
+    },
+    "level": "info"
+  },
+  "swagger_ui_config": {},
+  "job": {
+    "make_offer": 180000,
+    "order_deliver": 120000
+  },
+  "item_image_count": 15
+}

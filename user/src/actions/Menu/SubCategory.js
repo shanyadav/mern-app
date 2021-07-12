@@ -1,0 +1,20 @@
+import { createAction } from "redux-actions";
+
+export const SUBCATEGORIEsActions = {
+  GET_SUBCATEGORIE_REQUEST: "GET SUBCATEGORIES REQUESTED!",
+  GET_SUBCATEGORIE_SUCCESS: "GET SUBCATEGORIE SUCCESS!",
+  GET_SUBCATEGORIE_FAILED: "GET SUBCATEGORIE FAILED!",
+};
+
+// GET SUBCATEGORIEs
+
+export const getSUBCATEGORIEsRequest = createAction(
+  SUBCATEGORIEsActions.GET_SUBCATEGORIE_REQUEST
+);
+
+export const getSUBCATEGORIEsSuccess = createAction(
+  SUBCATEGORIEsActions.GET_SUBCATEGORIE_SUCCESS
+);
+export const getSUBCATEGORIEsFailed = createAction(
+  SUBCATEGORIEsActions.GET_SUBCATEGORIE_FAILED
+);

@@ -1,0 +1,1450 @@
+---
+swagger: "2.0"
+info:
+  description: "This is api for Better Tech Solution"
+  version: "1.0.0"
+  title: "Better Tech Solution"
+  contact:
+    name: "BTS Team"
+    url: "https://seedemo.co.uk/"
+    email: "bts@support.com"
+host: "localhost:3200"
+basePath: "/v1"
+tags:
+  - name: "Authentication"
+    description: "Routes related to user sign in and user sign up"
+  - name: "User"  
+    description: "Routes related to user"  
+  - name: "Category"  
+    description: "Routes related to item category"
+  - name: "SubCategory"  
+    description: "Routes related to sub-category"
+  - name: "Allergy"  
+    description: "Routes related to allergy"   
+  - name: "Spice"  
+    description: "Routes related to spice"
+  - name: "Calorie"  
+    description: "Routes related to calorie"   
+  - name: "FoodType"  
+    description: "Routes related to food type"        
+schemes:
+  - "http"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+paths:
+  /sign-up:
+    post:
+      x-swagger-router-controller: "Authentication"
+      operationId: "userSignUp"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: user
+          in: body
+          required: true
+          description: The payload for user details
+          schema:
+            $ref: "#/definitions/user_signUp_details"
+      x-public-operation: true
+      responses:
+        201:
+          description: "The JWT token after the user is successfully created"
+          schema:
+            $ref: "#/definitions/user_create_response"
+        400:
+          description: "validation error while creating new user"
+          schema:
+            $ref: "#/definitions/user_create_validation_error"
+        409:
+          $ref: "#/responses/conflict_error"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Authentication"
+      summary: "API to create a new user"
+      description: "This API is responsible for creating a new user"      
+  /sign-in:
+    post:
+      x-swagger-router-controller: "Authentication"
+      operationId: "userSignIn"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: user
+          in: body
+          required: true
+          description: The payload for user details
+          schema:
+            $ref: "#/definitions/user_signIn_details"
+      x-public-operation: true
+      responses:
+        201:
+          description: "The JWT token after the user is successfully login"
+          schema:
+            $ref: "#/definitions/user_create_response"
+        400:
+          description: "validation error while login user"
+          schema:
+            $ref: "#/definitions/user_create_validation_error"
+        409:
+          $ref: "#/responses/conflict_error"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Authentication"
+      summary: "API to login user"
+      description: "This API is responsible for login user" 
+  /update-email-status:
+    get:
+      x-swagger-router-controller: "Authentication"
+      operationId: "updateEmailStatus"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      x-public-operation: true
+      parameters:
+        - $ref: "#/parameters/email_id"
+      responses:
+        200:
+          $ref: "#/responses/user_with_id_response"
+        400:
+          description: "validation error while sending otp for reset password"
+          schema:
+            $ref: "#/definitions/user_create_validation_error"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "User"
+      summary: "API to verify user email"
+      description: "This API is responsible for verifying user email"         
+  /category:
+    post:
+      x-swagger-router-controller: "Category"
+      operationId: "createCategory"
+      x-blog-api: true
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      security:
+        - jwt: []  
+      parameters:
+        - $ref: "#/parameters/x-request-jwt"
+        - name: category
+          in: body
+          required: true
+          description: The payload for category details
+          schema:
+            $ref: "#/definitions/category_details"
+      responses:
+        201:
+          $ref: "#/responses/category_with_id_response"
+        400:
+          description: "validation error while creating category"
+          schema:
+            $ref: "#/definitions/user_create_validation_error"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Category"
+      summary: "API to create category"
+      description: "This API is responsible for creating category"   
+    get:
+      x-swagger-router-controller: "Category"
+      operationId: "getCategoryList"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      x-public-operation: true
+      parameters:
+        - $ref: "#/parameters/status_filter"
+      responses:
+        200:
+          description: "Get all categories"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/category_response"
+        204:
+          description: "Empty category list"
+          schema:
+            $ref: "#/responses/empty_list"
+        400:
+          description: "validation error while fetching all categories"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Category"
+      summary: "API to fetch all category"
+      description: "This API is responsible for fetching all category"
+  /category/{category_id}:
+    parameters:
+      - $ref: "#/parameters/category_id"
+    get:
+      x-swagger-router-controller: "Category"
+      operationId: "getCategory"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      x-public-operation: true
+      responses:
+        200:
+          $ref: "#/responses/category_with_id_response"
+        400:
+          description: "validation error while fetching category with given category_id"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        404:
+          $ref: "#/responses/resource_not_found"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Category"
+      summary: "API to fetch category with given category_id"
+      description: "This API is responsible for fetching category with given category_id" 
+    put:
+      x-swagger-router-controller: "Category"
+      operationId: "updateCategory"
+      x-blog-api: true
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      security:
+        - jwt: []
+      parameters:
+        - $ref: "#/parameters/x-request-jwt"
+        - name: category
+          in: body
+          required: true
+          description: The payload for category details
+          schema:
+            $ref: "#/definitions/update_category_details"
+      responses:
+        200:
+          $ref: "#/responses/category_with_id_response"
+        400:
+          description: "validation error while updating category with given category_id"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        401:
+          $ref: "#/responses/authorization_error_model"
+        404:
+          $ref: "#/responses/resource_not_found"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Category"
+      summary: "API to update category with given category_id"
+      description: "This API is responsible for updating category with given category_id"             
+  /sub-category:
+    post:
+      x-swagger-router-controller: "SubCategory"
+      operationId: "createSubCategory"
+      x-blog-api: true
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      security:
+        - jwt: []
+      parameters:
+        - name: subCategory
+          in: body
+          required: true
+          description: The payload for sub-category details
+          schema:
+            $ref: "#/definitions/sub_category_details"
+        - $ref: "#/parameters/x-request-jwt"
+      responses:
+        201:
+          $ref: "#/responses/subCategory_with_id_response"
+        400:
+          description: "validation error while creating new sub-category"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        401:
+          $ref: "#/responses/authorization_error_model"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "SubCategory"
+      summary: "API to create a new sub-category"
+      description: "This API is responsible for creating a new sub-category"
+    get:
+      x-swagger-router-controller: "SubCategory"
+      operationId: "getSubCategoryList"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      x-public-operation: true
+      parameters:
+        - $ref: "#/parameters/status_filter"
+        - $ref: "#/parameters/category_filter"
+      responses:
+        200:
+          description: "Get all sub-categories"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/subCategory_response"
+        204:
+          description: "Empty sub-category list"
+          schema:
+            $ref: "#/responses/empty_list"
+        400:
+          description: "validation error while fetching all sub-categories"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "SubCategory"
+      summary: "API to fetch all sub-category"
+      description: "This API is responsible for fetching all sub-category for user and admin"    
+  /sub-category/{sub_category_id}:
+    parameters:
+      - $ref: "#/parameters/sub_category_id"
+    get:
+      x-swagger-router-controller: "SubCategory"
+      operationId: "getSubCategory"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      x-public-operation: true
+      responses:
+        200:
+          $ref: "#/responses/subCategory_with_id_response"
+        400:
+          description: "validation error while fetching subCategory with given sub_category_id"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        404:
+          $ref: "#/responses/resource_not_found"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "SubCategory"
+      summary: "API to fetch sub-category with given sub_category_id"
+      description: "This API is responsible for fetching sub-category with given sub_category_id"
+    put:
+      x-swagger-router-controller: "SubCategory"
+      operationId: "updateSubCategory"
+      x-blog-api: true
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      security:
+        - jwt: []
+      parameters:
+        - $ref: "#/parameters/x-request-jwt"
+        - name: subCategory
+          in: body
+          required: true
+          description: The payload for sub-category details
+          schema:
+            $ref: "#/definitions/update_sub_category_details"
+      responses:
+        200:
+          $ref: "#/responses/subCategory_with_id_response"
+        400:
+          description: "validation error while updating sub-category with given sub_category_id"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        401:
+          $ref: "#/responses/authorization_error_model"
+        404:
+          $ref: "#/responses/resource_not_found"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "SubCategory"
+      summary: "API to update sub-category with given subCategory_id"
+      description: "This API is responsible for updating sub-category with given subCategory_id"
+  /allergy:
+    post:
+      x-swagger-router-controller: "Allergy"
+      operationId: "createAllergy"
+      x-blog-api: true
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      security:
+        - jwt: []  
+      parameters:
+        - $ref: "#/parameters/x-request-jwt"
+        - name: allergy
+          in: body
+          required: true
+          description: The payload for allergy details
+          schema:
+            $ref: "#/definitions/allergy_details"
+      responses:
+        201:
+          $ref: "#/responses/allergy_with_id_response"
+        400:
+          description: "validation error while creating allergy"
+          schema:
+            $ref: "#/definitions/user_create_validation_error"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Allergy"
+      summary: "API to create allergy"
+      description: "This API is responsible for creating allergy"   
+    get:
+      x-swagger-router-controller: "Allergy"
+      operationId: "getAllergyList"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      x-public-operation: true
+      parameters:
+        - $ref: "#/parameters/status_filter"
+      responses:
+        200:
+          description: "Get all allergies"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/allergy_response"
+        204:
+          description: "Empty allergy list"
+          schema:
+            $ref: "#/responses/empty_list"
+        400:
+          description: "validation error while fetching all allergies"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Allergy"
+      summary: "API to fetch all allergy"
+      description: "This API is responsible for fetching all allergy"
+  /allergy/{allergy_id}:
+    parameters:
+      - $ref: "#/parameters/allergy_id"
+    get:
+      x-swagger-router-controller: "Allergy"
+      operationId: "getAllergy"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      x-public-operation: true
+      responses:
+        200:
+          $ref: "#/responses/allergy_with_id_response"
+        400:
+          description: "validation error while fetching allergy with given allergy_id"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        404:
+          $ref: "#/responses/resource_not_found"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Allergy"
+      summary: "API to fetch allergy with given allergy_id"
+      description: "This API is responsible for fetching allergy with given allergy_id" 
+    put:
+      x-swagger-router-controller: "Allergy"
+      operationId: "updateAllergy"
+      x-blog-api: true
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      security:
+        - jwt: []
+      parameters:
+        - $ref: "#/parameters/x-request-jwt"
+        - name: allergy
+          in: body
+          required: true
+          description: The payload for allergy details
+          schema:
+            $ref: "#/definitions/update_allergy_details"
+      responses:
+        200:
+          $ref: "#/responses/allergy_with_id_response"
+        400:
+          description: "validation error while updating allergy with given allergy_id"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        401:
+          $ref: "#/responses/authorization_error_model"
+        404:
+          $ref: "#/responses/resource_not_found"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Allergy"
+      summary: "API to update allergy with given allergy_id"
+      description: "This API is responsible for updating allergy with given allergy_id" 
+  /spice:
+    post:
+      x-swagger-router-controller: "Spice"
+      operationId: "createSpice"
+      x-blog-api: true
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      security:
+        - jwt: []  
+      parameters:
+        - $ref: "#/parameters/x-request-jwt"
+        - name: spice
+          in: body
+          required: true
+          description: The payload for spice details
+          schema:
+            $ref: "#/definitions/allergy_details"
+      responses:
+        201:
+          $ref: "#/responses/allergy_with_id_response"
+        400:
+          description: "validation error while creating spice level"
+          schema:
+            $ref: "#/definitions/user_create_validation_error"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Spice"
+      summary: "API to create spice level"
+      description: "This API is responsible for creating spice level"   
+    get:
+      x-swagger-router-controller: "Spice"
+      operationId: "getSpiceList"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      x-public-operation: true
+      parameters:
+        - $ref: "#/parameters/status_filter"
+      responses:
+        200:
+          description: "Get all spice levels"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/allergy_response"
+        204:
+          description: "Empty spice list"
+          schema:
+            $ref: "#/responses/empty_list"
+        400:
+          description: "validation error while fetching all spice levels"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Spice"
+      summary: "API to fetch all spice level"
+      description: "This API is responsible for fetching all spice level"
+  /spice/{spice_id}:
+    parameters:
+      - $ref: "#/parameters/spice_id"
+    get:
+      x-swagger-router-controller: "Spice"
+      operationId: "getSpice"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      x-public-operation: true
+      responses:
+        200:
+          $ref: "#/responses/allergy_with_id_response"
+        400:
+          description: "validation error while fetching spice with given spice_id"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        404:
+          $ref: "#/responses/resource_not_found"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Spice"
+      summary: "API to fetch spice with given spice_id"
+      description: "This API is responsible for fetching spice with given spice_id" 
+    put:
+      x-swagger-router-controller: "Spice"
+      operationId: "updateSpice"
+      x-blog-api: true
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      security:
+        - jwt: []
+      parameters:
+        - $ref: "#/parameters/x-request-jwt"
+        - name: spice
+          in: body
+          required: true
+          description: The payload for spice details
+          schema:
+            $ref: "#/definitions/update_allergy_details"
+      responses:
+        200:
+          $ref: "#/responses/allergy_with_id_response"
+        400:
+          description: "validation error while updating spice with given spice_id"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        401:
+          $ref: "#/responses/authorization_error_model"
+        404:
+          $ref: "#/responses/resource_not_found"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Spice"
+      summary: "API to update spice with given spice_id"
+      description: "This API is responsible for updating spice with given spice_id"                
+  /calorie:
+    post:
+      x-swagger-router-controller: "Calorie"
+      operationId: "createCalorie"
+      x-blog-api: true
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      security:
+        - jwt: []  
+      parameters:
+        - $ref: "#/parameters/x-request-jwt"
+        - name: calorie
+          in: body
+          required: true
+          description: The payload for calorie details
+          schema:
+            $ref: "#/definitions/allergy_details"
+      responses:
+        201:
+          $ref: "#/responses/allergy_with_id_response"
+        400:
+          description: "validation error while creating calorie"
+          schema:
+            $ref: "#/definitions/user_create_validation_error"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Calorie"
+      summary: "API to create calorie "
+      description: "This API is responsible for creating calorie"   
+    get:
+      x-swagger-router-controller: "Calorie"
+      operationId: "getCalorieList"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      x-public-operation: true
+      parameters:
+        - $ref: "#/parameters/status_filter"
+      responses:
+        200:
+          description: "Get all calorie levels"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/allergy_response"
+        204:
+          description: "Empty calorie list"
+          schema:
+            $ref: "#/responses/empty_list"
+        400:
+          description: "validation error while fetching all calorie"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Calorie"
+      summary: "API to fetch all calorie"
+      description: "This API is responsible for fetching all calorie"
+  /calorie/{calorie_id}:
+    parameters:
+      - $ref: "#/parameters/calorie_id"
+    get:
+      x-swagger-router-controller: "Calorie"
+      operationId: "getCalorie"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      x-public-operation: true
+      responses:
+        200:
+          $ref: "#/responses/allergy_with_id_response"
+        400:
+          description: "validation error while fetching calorie with given calorie_id"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        404:
+          $ref: "#/responses/resource_not_found"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Calorie"
+      summary: "API to fetch calorie with given calorie_id"
+      description: "This API is responsible for fetching calorie with given calorie_id" 
+    put:
+      x-swagger-router-controller: "Calorie"
+      operationId: "updateCalorie"
+      x-blog-api: true
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      security:
+        - jwt: []
+      parameters:
+        - $ref: "#/parameters/x-request-jwt"
+        - name: calorie
+          in: body
+          required: true
+          description: The payload for calorie details
+          schema:
+            $ref: "#/definitions/update_allergy_details"
+      responses:
+        200:
+          $ref: "#/responses/allergy_with_id_response"
+        400:
+          description: "validation error while updating calorie with given calorie_id"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        401:
+          $ref: "#/responses/authorization_error_model"
+        404:
+          $ref: "#/responses/resource_not_found"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "Calorie"
+      summary: "API to update calorie with given calorie_id"
+      description: "This API is responsible for updating calorie with given calorie_id"  
+  /food-type:
+    post:
+      x-swagger-router-controller: "FoodType"
+      operationId: "createFoodType"
+      x-blog-api: true
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+      security:
+        - jwt: []  
+      parameters:
+        - $ref: "#/parameters/x-request-jwt"
+        - $ref: "#/parameters/food_type_name"
+        - $ref: "#/parameters/food_type_icon"
+      responses:
+        201:
+          $ref: "#/responses/food_type_with_id_response"
+        400:
+          description: "validation error while creating food type"
+          schema:
+            $ref: "#/definitions/user_create_validation_error"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "FoodType"
+      summary: "API to create food type"
+      description: "This API is responsible for creating food type"   
+    get:
+      x-swagger-router-controller: "FoodType"
+      operationId: "getFoodTypeList"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      x-public-operation: true
+      parameters:
+        - $ref: "#/parameters/status_filter"
+      responses:
+        200:
+          description: "Get all food types"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/food_type_response"
+        204:
+          description: "Empty food type list"
+          schema:
+            $ref: "#/responses/empty_list"
+        400:
+          description: "validation error while fetching all food types"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "FoodType"
+      summary: "API to fetch all food types "
+      description: "This API is responsible for fetching all food types"
+  /food-type/{food_type_id}:
+    parameters:
+      - $ref: "#/parameters/food_type_id"
+    get:
+      x-swagger-router-controller: "FoodType"
+      operationId: "getFoodType"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      x-public-operation: true
+      responses:
+        200:
+          $ref: "#/responses/food_type_with_id_response"
+        400:
+          description: "validation error while fetching food type with given food_type_id"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        404:
+          $ref: "#/responses/resource_not_found"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "FoodType"
+      summary: "API to fetch food type with given food_type_id"
+      description: "This API is responsible for fetching food type with given food_type_id" 
+    put:
+      x-swagger-router-controller: "FoodType"
+      operationId: "updateFoodType"
+      x-blog-api: true
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+      security:
+        - jwt: []
+      parameters:
+        - $ref: "#/parameters/x-request-jwt"
+        - $ref: "#/parameters/food_type_name"
+        - $ref: "#/parameters/food_type_icon"
+      responses:
+        200:
+          $ref: "#/responses/food_type_with_id_response"
+        400:
+          description: "validation error while updating food type with given food_type_id"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        401:
+          $ref: "#/responses/authorization_error_model"
+        404:
+          $ref: "#/responses/resource_not_found"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "FoodType"
+      summary: "API to update food type with given food_type_id"
+      description: "This API is responsible for updating food type with given food_type_id"
+  /food-type/status/{food_type_id}:
+    put:
+      x-swagger-router-controller: "FoodType"
+      operationId: "updateFoodTypeStatus"
+      x-blog-api: true
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      security:
+        - jwt: []
+      parameters:
+        - $ref: "#/parameters/food_type_id"
+        - $ref: "#/parameters/x-request-jwt"
+        - name: foodType
+          in: body
+          required: true
+          description: The payload for food-type status details
+          schema:
+            $ref: "#/definitions/food_type_status_details"
+      responses:
+        200:
+          $ref: "#/responses/food_type_with_id_response"
+        400:
+          description: "validation error while updating food type status with given food_type_id"
+          schema:
+            $ref: "#/definitions/category_validation_error"
+        401:
+          $ref: "#/responses/authorization_error_model"
+        404:
+          $ref: "#/responses/resource_not_found"
+        default:
+          $ref: "#/responses/server_error_model"
+      tags:
+        - "FoodType"
+      summary: "API to update food type status with given food_type_id"
+      description: "This API is responsible for updating food type status with given food_type_id"                          
+definitions:
+  mongo_default_fields:
+    type: "object"
+    required:
+      - _id
+      - created_at
+      - updated_at
+      - __v
+    properties:
+      _id:
+        type: string
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+      __v:
+        type: integer  
+  user_signUp_details:
+    type: "object"
+    required:
+      - name
+      - email
+      - password
+    properties:
+      name:
+        type: string
+        pattern: ^[A-Za-z ]{2,}$
+        description: "The name of user"
+      email:
+        type: string
+        pattern: ^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z0-9]{2,}$
+        description: "The email Id"
+      password:
+        type: string
+        maxLength: 20
+        pattern: ^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})
+        description: "The password"
+      contact_number:
+        type: string
+        pattern: ^[0-9]{10}$
+        description: "The contact number of user"
+      role:
+        type: string
+        default: USER
+        enum:
+          - ADMIN
+          - USER
+          - SUPER_ADMIN
+        description: "The role of system authorized person"
+  user_signIn_details:
+    type: "object"
+    required:
+      - email
+      - password
+    properties:
+      email:
+        type: string
+        pattern: ^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z0-9]{2,}$
+        description: "The email Id"
+      password:
+        type: string
+        maxLength: 20
+        pattern: ^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})
+        description: "The password"
+  update_category_details:
+    type: "object"
+    properties:
+      name:
+        type: string
+        description: "The category name"
+      description:
+        type: string
+        description: "The category description"
+      is_deleted:
+        type: boolean
+        description: "The category status"
+  category_details:
+    type: "object"
+    required:
+      - name
+    properties:
+      name:
+        type: string
+        description: "The category name"
+      description:
+        type: string
+        description: "The category description"
+      is_deleted:
+        type: boolean
+        description: "The category status"     
+  sub_category_details:
+    type: "object"
+    required:
+      - name
+      - category_id
+    properties:
+      name:
+        type: string
+        minLength: 2
+        description: "The name of sub-category"
+      category_id:
+        type: string
+        pattern: ^[0-9a-fA-F]{24}$
+        description: "The category_id"
+      description:
+        type: string
+        description: "The sub-category description"
+      is_deleted:
+        type: boolean
+        description: "The sub-category status"  
+    additionalProperties: false
+  update_sub_category_details:
+    type: "object"
+    properties:
+      name:
+        type: string
+        minLength: 2
+        description: "The name of sub-category"
+      category_id:
+        type: string
+        pattern: ^[0-9a-fA-F]{24}$
+        description: "The category_id"
+      description:
+        type: string
+        description: "The sub-category description"
+      is_deleted:
+        type: boolean
+        description: "The sub-category status"  
+    additionalProperties: false  
+  allergy_details:
+    type: "object"
+    required:
+      - name
+    properties:
+      name:
+        type: string
+        description: "The name"
+      is_deleted:
+        type: boolean
+        description: "The status"
+  update_allergy_details:
+    type: "object"
+    properties:
+      name:
+        type: string
+        description: "The allergy name"
+      is_deleted:
+        type: boolean
+        description: "The allergy status" 
+  food_type_status_details:
+    type: "object"
+    required:
+      - is_deleted
+    properties:
+      is_deleted:
+        type: boolean
+        description: "The status of food-type"      
+  user_details:
+    type: "object"
+    properties:
+      name:
+        type: string
+        pattern : ^[A-Za-z ]{2,}$
+        description: "The name of user"
+      contact_number:
+        type: string
+        description: "The contact number of user"
+      address_id:
+        type: string
+        pattern: ^[0-9a-fA-F]{24}$
+        description: "The Address information of user"
+      is_deleted:
+        type: boolean
+        description: "The status of user"
+      is_email_verified:
+        type: boolean
+        description: "The status of email"
+    additionalProperties: false
+  user_extra_details:
+    type: "object"
+    properties:
+      email:
+        description: The user email-id
+        type: string
+      profile_img:
+        description: The user profile image
+        type: string
+      role:
+        type: string
+        default: user
+        enum:
+          - user
+          - admin
+        description: "The role of system authorized person"  
+  category_response:        
+    allOf:
+      - $ref: "#/definitions/mongo_default_fields"
+      - $ref: "#/definitions/category_details"
+  subCategory_response:
+    allOf:
+    - $ref: "#/definitions/mongo_default_fields"
+    - $ref: "#/definitions/sub_category_details"
+  allergy_response:        
+    allOf:
+      - $ref: "#/definitions/mongo_default_fields"
+      - $ref: "#/definitions/allergy_details"    
+  food_type_response:
+      allOf:
+      - $ref: "#/definitions/mongo_default_fields"
+      - $ref: "#/definitions/allergy_details"    
+      - type: object
+        properties:
+          avatar_url:
+            type: string
+            description: "The food type icon url"  
+  user_create_response:
+    type: "object"
+    required:
+      - "token"
+    properties:
+      user_id:
+        type: "string"
+        description: "The user_id"
+      email:
+        type: "string"
+        description: "The user email"
+      name:
+        type: "string"
+        description: "The user name"
+      token:
+        type: "string"
+        description: "The token for user authentication"
+      role:
+        type: string
+        default: USER
+        enum:
+          - ADMIN
+          - USER
+          - SUPER_ADMIN
+
+        description: "The role of system authorized person"       
+  user_create_validation_error:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: string
+        enum:
+          - REQUIRED
+          - PATTERN
+          - INVALID_TYPE
+          - SCHEMA_VALIDATION_FAILED
+          - CONTENT_TYPE_NOT_SUPPORTED
+          - MODEL_VALIDATION_FAILED
+      message:
+        type: string
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/user_create_validation_single_error"
+  user_response:
+    allOf:
+      - $ref: "#/definitions/mongo_default_fields"
+      - $ref: "#/definitions/user_extra_details"
+      - $ref: "#/definitions/user_details"        
+  user_create_validation_error:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: string
+        enum:
+          - REQUIRED
+          - PATTERN
+          - INVALID_TYPE
+          - SCHEMA_VALIDATION_FAILED
+          - CONTENT_TYPE_NOT_SUPPORTED
+          - MODEL_VALIDATION_FAILED
+      message:
+        type: string
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/user_create_validation_single_error"
+  user_create_validation_single_error:
+    type: object
+    required:
+      - code
+      - message
+      - path
+    properties:
+      code:
+        type: string
+        enum:
+          - PATTERN
+          - ENUM_MISMATCH
+          - INVALID_TYPE
+          - OBJECT_ADDITIONAL_PROPERTIES
+          - MIN_LENGTH
+          - OBJECT_MISSING_REQUIRED_PROPERTY
+      message:
+        type: string
+      path:
+        type: array
+        items:
+          type: string 
+  category_validation_error:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: string
+        enum:
+          - REQUIRED
+          - PATTERN
+          - SCHEMA_VALIDATION_FAILED
+          - CONTENT_TYPE_NOT_SUPPORTED
+          - MODEL_VALIDATION_FAILED
+      message:
+        type: string
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/category_validation_single_error"
+  category_validation_single_error:
+    type: object
+    required:
+      - code
+      - message
+      - path
+    properties:
+      code:
+        type: string
+        enum:
+          - PATTERN
+          - ENUM_MISMATCH
+          - INVALID_TYPE
+          - OBJECT_ADDITIONAL_PROPERTIES
+          - MIN_LENGTH
+          - MAX_LENGTH
+          - OBJECT_MISSING_REQUIRED_PROPERTY
+      message:
+        type: string
+      path:
+        type: array
+        items:
+          type: string
+  server_error_model:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+      stack:
+        type: string
+  resource_not_found_model:
+    description: "No resource found"
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: string
+        enum:
+          - RESOURCE_NOT_FOUND
+      message:
+        type: string
+  empty_list_model:
+    description: "No records found"
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: string
+        enum:
+          - NO_CONTENT
+      message:
+        type: string                  
+  authorization_error_model:
+    type: "object"
+    required:
+      - "code"
+      - "message"
+    properties:
+      code:
+        type: "string"
+        enum:
+          - AUTHORIZATION_ERROR
+      message:
+        type: "string"
+  conflict_error_model:
+    type: "object"
+    required:
+      - "code"
+      - "message"
+    properties:
+      code:
+        type: "string"
+        enum:
+          - CONFLICT_ERROR
+      message:
+        type: "string"        
+  server_error_model:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+      stack:
+        type: string
+parameters:
+  x-request-jwt:
+    name: x-request-jwt
+    in: header
+    type: string
+    required: true
+  status_filter:
+    name: is_deleted
+    in: query
+    description: 'The response with status'
+    required: false
+    type: boolean
+  category_filter: 
+    name: category_id
+    in: query
+    description: 'The category filter'
+    required: false
+    type: string
+    pattern: ^[0-9a-fA-F]{24}$
+  email_id:
+    name: 'email_id'
+    in: query
+    type: string
+    description: 'Verify email-id'  
+  category_id:
+    name: category_id
+    in: path
+    type: string
+    pattern: ^[0-9a-fA-F]{24}$
+    required: true
+  sub_category_id:
+    name: sub_category_id
+    in: path
+    type: string
+    pattern: ^[0-9a-fA-F]{24}$
+    required: true 
+  allergy_id:
+    name: allergy_id
+    in: path
+    type: string
+    pattern: ^[0-9a-fA-F]{24}$
+    required: true    
+  spice_id:  
+    name: spice_id
+    in: path
+    type: string
+    pattern: ^[0-9a-fA-F]{24}$
+    required: true
+  calorie_id:  
+    name: calorie_id
+    in: path
+    type: string
+    pattern: ^[0-9a-fA-F]{24}$
+    required: true  
+  food_type_name:
+    name: food_type_name
+    in: formData
+    type: string
+    required: false
+    description: "The name of food type"
+  food_type_icon:
+    name: food_type_icon
+    in: formData
+    type: file
+    required: false
+    description: 'The icon of food type'  
+  food_type_id:  
+    name: food_type_id
+    in: path
+    type: string
+    pattern: ^[0-9a-fA-F]{24}$
+    required: true   
+responses:
+  category_with_id_response:
+    description: "The details of category"
+    schema:
+      $ref: "#/definitions/category_response"
+  subCategory_with_id_response:
+    description: "The details of sub-category"
+    schema:
+      $ref: "#/definitions/subCategory_response" 
+  allergy_with_id_response:
+    description: "The details of allergy/spice/calorie"
+    schema:
+      $ref: "#/definitions/allergy_response"
+  food_type_with_id_response:
+    description: "The details of allergy/spice/calorie"
+    schema:
+      $ref: "#/definitions/food_type_response"               
+  conflict_error:
+    description: "Already exist"
+    schema:
+      $ref: "#/definitions/conflict_error_model"    
+  server_error_model:
+    description: "Server error occurred"
+    schema:
+      $ref: "#/definitions/server_error_model"
+  user_with_id_response:
+    description: "The details of user"
+    schema:
+      $ref: "#/definitions/user_response"    
+  empty_list:
+    description: "Empty List"
+    schema:
+      $ref: "#/definitions/empty_list_model"   
+  resource_not_found:
+    description: "Resource not found"
+    schema:
+      $ref: "#/definitions/resource_not_found_model"
+  authorization_error_model:
+    description: "Failed to authorize the user making the request"
+    schema:
+      $ref: "#/definitions/authorization_error_model"       
+
+securityDefinitions:
+  jwt:
+    type: apiKey
+    in: header
+    name: x-request-jwt        
